@@ -5,6 +5,7 @@ const StylePage = StyleSheet.create({
     backgroundColor: '#E8C445',
     flex: 1,
     zIndex: 0,
+    overflow:'scroll'
   },
 
   logo: {
@@ -22,6 +23,7 @@ const StylePage = StyleSheet.create({
   textsOnRow: {
     flexDirection: 'row',
     justifyContent: 'center',
+    marginBottom: 35
   },
 
   firstText: {

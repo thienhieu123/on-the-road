@@ -21,6 +21,12 @@ const StyleInputField = StyleSheet.create({
     height: 24,
   },
 
+  imageMenu: {
+    width: 30,
+    height: 30,
+    marginLeft: 20
+  },
+
   btnCustom: {
     backgroundColor: '#E16C00',
     color: 'white',

@@ -3,19 +3,28 @@ import { View, Text, Image, TouchableOpacity,ScrollView } from 'react-native'
 import AppStyle from '../theme';
 import InputField from '../components/InputField';
 import ButtonCustom from '../components/ButtonCustom';
+import {StackActions} from '@react-navigation/native';
 
 export class RegisterPage extends Component {
     constructor(props) {
         super(props);
-        //console.log(this.props.navigation);
+    }
+
+    register(){
+        this.props.navigation.dispatch(StackActions.replace('Home Page'));
+        this.props.navigation.reset({
+          index:0,
+          routes:[{name:'Home Page'}]
+        })
       }
+
     render() {
         return (
-            <ScrollView>
-                <View style={AppStyle.StylePage.container}>
+            <ScrollView style={AppStyle.StylePage.container}>
+                <View >
                     <Image style={AppStyle.StylePage.logo} />
                     <View>
-                    <Text style={AppStyle.StylePage.title}>Log In</Text>
+                    <Text style={AppStyle.StylePage.title}>Register</Text>
                     </View>
             
                     <View>
@@ -44,7 +53,7 @@ export class RegisterPage extends Component {
                     <View style={AppStyle.StylePage.btnInPage}>
                     <ButtonCustom 
                         text="SIGN UP"
-                        navigateTo="123ssd" 
+                        onPress={() => this.register()}
                     />
                     </View>
             

@@ -3,12 +3,21 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import AppStyle from '../theme';
 import InputField from '../components/InputField';
 import ButtonCustom from '../components/ButtonCustom';
+import {StackActions} from '@react-navigation/native';
 
 export default class LoginPage extends Component {
   constructor(props) {
     super(props);
-    //console.log(this.props.navigation);
   }
+
+  login(){
+    this.props.navigation.dispatch(StackActions.replace('Home Page'));
+    this.props.navigation.reset({
+      index:0,
+      routes:[{name:'Home Page'}]
+    })
+  }
+
   render() {
     return (
       <View style={AppStyle.StylePage.container}>
@@ -31,7 +40,7 @@ export default class LoginPage extends Component {
         <View style={AppStyle.StylePage.btnInPage}>
           <ButtonCustom 
             text="LOG IN" 
-            navigateTo={this.props.navigation}
+            onPress={() => this.login()}
           />
         </View>
 

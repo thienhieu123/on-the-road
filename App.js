@@ -16,21 +16,35 @@ import {Image, TouchableOpacity} from 'react-native';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
+function MyDrawer() {
+  return (
+    <Drawer.Navigator drawerContent={(props)=> <Menu {...props} />}>
+      <Drawer.Screen name="Home Page" component={HomePage} />
+    </Drawer.Navigator>
+  )
+}
+
 export default class App extends Component {
+  constructor(props){
+    super(props);
+  }
+
   render(){
     return (
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login Page" component={LoginPage} options={{headerShown:false}}/>
           <Stack.Screen name="Register Page" component={RegisterPage} options={{headerShown:false}}/>
-          <Stack.Screen 
+          <Stack.Screen name="Home Page" component={MyDrawer} options={{headerShown:false}}/>
+          {/* <Stack.Screen name="Home Page" component={HomePage} options={{headerShown:false}}/> */}
+          {/* <Stack.Screen 
             name="Home Page" 
             component={HomePage} 
             options={{
               title: 'Home',
               headerStyle: {
                 backgroundColor: '#E16C00',
-                height: 80,
+                height: 100,
               },
               headerTintColor: '#fff',
               headerTitleStyle: {
@@ -38,9 +52,9 @@ export default class App extends Component {
                 fontSize:30
               },
               headerTitleAlign:'center',
-              headerLeft: (props) => (
+              headerLeft: () => (
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate('Menu')}
+                  //onPress={() => navigation.navigate('Menu')}
                 >
                   <Image
                     style={AppStyle.StyleInputField.imageMenu}
@@ -49,25 +63,10 @@ export default class App extends Component {
                 </TouchableOpacity>
               ),
             }}
-          />
-          <Stack.Screen name="Menu" component={MyDrawer} options={{headerShown:false}}/>
+          /> */}
         </Stack.Navigator>
       </NavigationContainer>
     );
   }
+}
 
-  // MyDrawer() {
-  //   return (
-  //     <Drawer.Navigator>
-  //       <Drawer.Screen name="Menu" component={Menu} />
-  //     </Drawer.Navigator>
-  //   )
-  // }
-}
-function MyDrawer() {
-  return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Menu" component={Menu} />
-    </Drawer.Navigator>
-  )
-}
